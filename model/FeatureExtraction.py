@@ -31,25 +31,25 @@ class FEB(nn.Module):
     def getfebnet1(self):
         self.sparse = nn.Sequential(
                       self.FEBBlock1(inchannel=3, outchannel=64, kernel=(3,3), stride=1, padding=1),
-                      self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=1, dilation=2),
-                      self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=0),
-                      self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=0),
-                      self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=1, dilation=2),
-                      self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=0),
-                      self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=0),
-                      self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=0),
-                      self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=1, dilation=2),
-                      self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=0),
-                      self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=0),
-                      self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=1, dilation=2),
+                      self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=2, dilation=2),
+                      self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=1),
+                      self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=1),
+                      self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=2, dilation=2),
+                      self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=1),
+                      self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=1),
+                      self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=1),
+                      self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=2, dilation=2),
+                      self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=1),
+                      self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=1),
+                      self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=2, dilation=2),
                       
         )
 
         self.febn1 = nn.Sequential(
-                    self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=0),
-                    self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=0),
-                    self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=0),
-                    nn.Conv2d(in_channels=64, out_channels=64, kernel_size=(3,3), stride=1, padding=0)
+                    self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=1),
+                    self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=1),
+                    self.FEBBlock1(inchannel=64, outchannel=64, kernel=(3,3), stride=1, padding=1),
+                    nn.Conv2d(in_channels=64, out_channels=64, kernel_size=(3,3), stride=1, padding=1)
         )
 
         return self.sparse, self.febn1
@@ -57,28 +57,28 @@ class FEB(nn.Module):
 
     def getfebnet2(self):
         self.commonconv = nn.Sequential(
-                        self.FEBBlock2(inchannel=3, outchannel=64, kernel=(3,3), stride=1,padding=0),
-                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=0),
-                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=0),
-                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=0),
-                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=0),
-                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=0),
-                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=0),
-                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=0),
-                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=0),
-                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=0),
-                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=0),
-                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=0),
-                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=0),
-                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=0),
-                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=0),
+                        self.FEBBlock2(inchannel=3, outchannel=64, kernel=(3,3), stride=1,padding=1),
+                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=1),
+                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=1),
+                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=1),
+                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=1),
+                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=1),
+                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=1),
+                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=1),
+                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=1),
+                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=1),
+                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=1),
+                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=1),
+                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=1),
+                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=1),
+                        self.FEBBlock2(inchannel=64, outchannel=64, kernel=(3,3), stride=1,padding=1),
 
         )
         
 
-        self.CB1 = nn.Conv2d(in_channels=64, out_channels=64, kernel_size=(1,1), stride=1, padding=0)
+        CB1 = nn.Conv2d(in_channels=64, out_channels=64, kernel_size=(1,1), stride=1, padding=0)
 
-        return self.commonconv, self.CB1
+        return self.commonconv, CB1
 
     
     def FeatureExtractionBlock(self):
