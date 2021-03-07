@@ -22,29 +22,31 @@ model = model.to(device)
 criterion = nn.MSELoss()
 optimizer = torch.optim.Adam(model.parameters(), lr=lr, betas=[beta_1, beta_2])
 
-def train():
+def train(model=model, train_dl=dataloader, loss_fn=criterion, optim=optimizer):
     epoch_loss = 0
-    model.eval()
+    model.train()
 
-    for x, y in dataloader:
+    for x, y in tqdm(train_dl, total=len(train_dl), leave=False):
         x = x.to(device)
         y = y.to(device)
 
-        modelout = model(x)
-        loss = criterion(modelout, y)
+        optim.zero_grad()
+
+        model_out = model(x)
         
+        loss = loss_fn(model_out, y)
+
         loss.backward()
 
-        optimizer.step()
+        optim.step()
 
-        optimizer.zero_grad()
+        epoch_loss += loss.item()
 
-        epoch_loss += loss
-            
-    return epoch_loss/len(dataloader)
+    return epoch_loss/len(train_dl)
 
-if __name__ == '__main__':
-
-    for epoch in epochs:
-        epoch_loss = train()
-        print(f'EPOCH: {epoch} || LOSS: {epoch_loss}')
+if __name__ == "__main__":
+    
+    for epoch in range(epochs):
+        loss = train()
+        print(f"EPOCH: {epoch} || LOSS: {loss}")
+        
