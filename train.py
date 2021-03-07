@@ -1,11 +1,12 @@
 from torch import nn
 import torch
 from model.model import DudeNet
-from data import getdata
+from data.getdata import Data
 from model.FeatureExtraction import FEB
 from model.reconst import finalLayers
+from tqdm.auto import tqdm
 
-path = '/'
+path = '/home/aradhya/Desktop/Research-DudeNet/data/BSR_bsds500/BSR/BSDS500/data/images/'
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -15,7 +16,9 @@ beta_2 = 0.999 ##paper values
 batch_size = 128 ##paper values
 epochs = 70 ##paper values
 
-dataloader = getdata(path)
+
+# dataloader = Data() 
+
 model = DudeNet(FEB, finalLayers)
 model = model.to(device)
 
@@ -29,7 +32,6 @@ def train(model=model, train_dl=dataloader, loss_fn=criterion, optim=optimizer):
     for x, y in tqdm(train_dl, total=len(train_dl), leave=False):
         x = x.to(device)
         y = y.to(device)
-
         optim.zero_grad()
 
         model_out = model(x)
@@ -49,4 +51,3 @@ if __name__ == "__main__":
     for epoch in range(epochs):
         loss = train()
         print(f"EPOCH: {epoch} || LOSS: {loss}")
-        
