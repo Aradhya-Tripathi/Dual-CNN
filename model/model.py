@@ -1,5 +1,5 @@
-from FeatureExtraction import FEB
-from reconst import finalLayers
+from .FeatureExtraction import FEB
+from .reconst import finalLayers
 import torch 
 from torch import nn 
 
