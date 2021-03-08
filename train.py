@@ -1,12 +1,15 @@
 from torch import nn
 import torch
 from model.model import DudeNet
-from data.getdata import Data
 from model.FeatureExtraction import FEB
 from model.reconst import finalLayers
 from tqdm.auto import tqdm
+from data.maindata import MyData
+from torch.utils.data import DataLoader
+from tqdm.auto import tqdm
 
-path = '/home/aradhya/Desktop/Research-DudeNet/data/BSR_bsds500/BSR/BSDS500/data/images/'
+groundTruthpath = '/home/aradhya/Desktop/Research-DudeNet/all-images/' ## trailing slash req
+trainingpath = '/home/aradhya/Desktop/Research-DudeNet/Training/' ## trailing slash req
 
 device = "cuda" if torch.cuda.is_available() else "cpu"
 
@@ -17,7 +20,10 @@ batch_size = 128 ##paper values
 epochs = 70 ##paper values
 
 
-# dataloader = Data() 
+data = MyData(groundTruthpath, trainingpath) 
+
+dataloader = DataLoader(data, batch_size=batch_size, num_workers=2)
+
 
 model = DudeNet(FEB, finalLayers)
 model = model.to(device)
