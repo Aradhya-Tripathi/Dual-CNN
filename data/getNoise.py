@@ -7,13 +7,13 @@ def noise(path, seed=None, noiseType='speckle'):
     return random_noise(im, mode=noiseType, seed=seed, clip=True)
 
 if __name__ == '__main__':
-    # image = noise('./BSR_bsds500/BSR/BSDS500/data/images/train/376020.jpg', seed=100)
+    # image = noise('/home/aradhya/Desktop/Research-DudeNet/all-images/im0014.ppm', seed=100)
     # cv2.imshow('testing', image)
     # cv2.waitKey(0)
     # cv2.destroyAllWindows()
 
-    path = './BSR_bsds500/BSR/BSDS500/data/images/train/'
-    trainingPath = './BSR_bsds500/BSR/BSDS500/data/images/noiseTraining/'
+    path = '/home/aradhya/Desktop/Research-DudeNet/all-images/'
+    trainingPath = '/home/aradhya/Desktop/Research-DudeNet/Training/'
 
     def saveImage(path, trainingPath):
         if os.path.exists(trainingPath):
