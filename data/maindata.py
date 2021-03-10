@@ -4,7 +4,7 @@ import os
 from PIL import Image
 
 class MyData(Dataset):
-    def __init__(self, groundTruthpath, trainingpath, std=(0.5,0.5,0.5), mean=(0.5,0.5,0.5)):
+    def __init__(self, groundTruthpath, trainingpath, std=(0.5,0.5,0.5), mean=(0.5,0.5,0.5), size=(256, 256)):
         print(len(os.listdir(groundTruthpath)), len(os.listdir(trainingpath)))
         # assert len(os.listdir(groundTruthpath)) == len(os.listdir(trainingpath))
         self.xpath, self.ypath = [], []
@@ -15,7 +15,7 @@ class MyData(Dataset):
             self.xpath.append(trainingpath+i)
 
         self.trans = transforms.Compose([
-                     transforms.Resize((256, 256)),
+                     transforms.Resize(size),
                      transforms.RandomRotation((90, 270)),
                      transforms.RandomHorizontalFlip(p=0.3),
                      transforms.ToTensor(),

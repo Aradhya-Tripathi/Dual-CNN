@@ -20,9 +20,9 @@ batch_size = 128 ##paper values
 epochs = 70 ##paper values
 
 
-data = MyData(groundTruthpath, trainingpath) 
+data = MyData(groundTruthpath, trainingpath, size=(256,256)) 
 
-dataloader = DataLoader(data, batch_size=batch_size, num_workers=2)
+dataloader = DataLoader(data, batch_size=1, num_workers=2)
 
 
 model = DudeNet(FEB, finalLayers)
@@ -49,11 +49,12 @@ def train(model=model, train_dl=dataloader, loss_fn=criterion, optim=optimizer):
         optim.step()
 
         epoch_loss += loss.item()
-
+        break
     return epoch_loss/len(train_dl)
 
 if __name__ == "__main__":
     
     for epoch in range(epochs):
         loss = train()
+        break
         print(f"EPOCH: {epoch} || LOSS: {loss}")
