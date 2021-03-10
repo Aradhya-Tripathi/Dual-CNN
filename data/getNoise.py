@@ -2,7 +2,7 @@ import cv2
 from skimage.util import random_noise
 import os
 
-def noise(path, seed=None, noiseType='speckle'):
+def noise(path, seed=None, noiseType='s&p'):
     im = cv2.imread(path, 1)
     return random_noise(im, mode=noiseType, seed=seed, clip=True)
 
@@ -10,7 +10,8 @@ if __name__ == '__main__':
     # image = noise('/home/aradhya/Desktop/Research-DudeNet/all-images/im0014.ppm', seed=100)
     # cv2.imshow('testing', image)
     # cv2.waitKey(0)
-    # cv2.destroyAllWindows()
+    # cv2.imwrite("testing.ppm", image)
+
 
     path = '/home/aradhya/Desktop/Research-DudeNet/all-images/'
     trainingPath = '/home/aradhya/Desktop/Research-DudeNet/Training/'

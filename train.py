@@ -20,7 +20,7 @@ batch_size = 128 ##paper values
 epochs = 70 ##paper values
 
 
-data = MyData(groundTruthpath, trainingpath, size=(256,256)) 
+data = MyData(groundTruthpath, trainingpath, size=(150,150)) 
 
 dataloader = DataLoader(data, batch_size=batch_size, num_workers=2)
 

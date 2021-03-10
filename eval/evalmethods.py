@@ -1,9 +1,11 @@
-import skimage
+from skimage.metrics import structural_similarity as ssim
+from skimage.metrics import peak_signal_noise_ratio as p
 
-def psnr(img1, img2):
-    psnr = skimage.metrics.peak_signal_noise_ratio(img1, img2)
-    return psnr
 
-def ssim(img1, img2):
-    ssim = skimage.metrics.structural_similarity(img1, img2)
-    return ssim ##returns mean ssim
+def getpsnr(img1, img2):
+    return p(img1, img2)
+    
+
+def getssim(img1, img2):
+    return ssim(img1, img2, multichannel=True)  ##returns mean ssim
+
