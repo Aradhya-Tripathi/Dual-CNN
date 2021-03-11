@@ -104,5 +104,6 @@ if __name__ == "__main__":
     testimage = torch.randn(1,3, 150, 150)
     print(FEB1(testimage).shape)
     print(FEB2(testimage).shape)
-
-
+    import time
+    print(time.time())
+    
